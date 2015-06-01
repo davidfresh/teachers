@@ -1,16 +1,15 @@
 package vision69.teachers;
 
-import android.content.Intent;
+
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.internal.app.ToolbarActionBar;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -33,18 +32,20 @@ import java.net.URISyntaxException;
 import java.util.HashMap;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import fragments.busqueda_fragment;
+import fragments.mis_profes;
 import util.SharedPreferencesHelper;
 
 /**
  * Created by Davidfresh on 20/05/15.
  */
-public class TimeLineActivity  extends ActionBarActivity implements AdapterView.OnItemClickListener, View.OnClickListener {
+public class TimeLineActivity  extends ActionBarActivity implements AdapterView.OnItemClickListener {
 
     private ActionBarDrawerToggle drawerToggle;
     private static final String DRAWER_LIST_POSITION_TAG = "drawer_list_position";
     private int DRAWER_LIST_POSITION = 0;
     private DrawerLayout drawerLayout;
-    private ToolbarActionBar tool;
+
     private Toolbar toolbar;
 
 
@@ -54,19 +55,6 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.time_line);
-
-        getSupportActionBar().setDisplayShowCustomEnabled(true);
-        getSupportActionBar().setHomeButtonEnabled(true);
-
-
-
-
-
-      /* toolbar =
-        if (toolbar != null) {
-            toolbar.setTitle(getString(R.string.app_name));
-
-  }*/
 
 
 
@@ -82,7 +70,7 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
 
         drawerLayout = (DrawerLayout) findViewById(R.id.drawerLayout);
 
-        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar,R.string.app_name,R.string.app_name) {
+        drawerToggle = new ActionBarDrawerToggle(this, drawerLayout,toolbar,R.string.app_name,R.string.app_name) {
 
 
             @Override
@@ -123,8 +111,11 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
         }
 
         drawerList.setSelection(DRAWER_LIST_POSITION);
-        //fragmentSwitcher(TimelineFragment.newInstance());
+        fragmentSwitcher(busqueda_fragment.newInstance());
     }
+
+
+
 
 
 
@@ -146,7 +137,7 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
     protected void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
 
-        outState.putInt(DRAWER_LIST_POSITION_TAG,DRAWER_LIST_POSITION);
+        outState.putInt(DRAWER_LIST_POSITION_TAG, DRAWER_LIST_POSITION);
 
     }
 
@@ -198,27 +189,26 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
         switch (position){
             case 0:
                 DRAWER_LIST_POSITION = position;
-                //fragmentSwitcher(TimelineFragment.newInstance());
-               // toolbar.setTitle("Home");
+                fragmentSwitcher(busqueda_fragment.newInstance());
+                //toolbar.setTitle("Home");
 
                 break;
             case 1:
                 DRAWER_LIST_POSITION = position;
-               // fragmentSwitcher(MyBooksFragment.newInstace());
+                fragmentSwitcher(mis_profes.newInstace());
                 //toolbar.setTitle("My Books");
                 break;
-            case 2:
-                DRAWER_LIST_POSITION = position;
-                //toolbar.setTitle("Favorites");
-                break;
+
         }
     }
-/*
+
+
+
     private void fragmentSwitcher(Fragment fragment){
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,fragment).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_contenedor,fragment).commit();
         drawerLayout.closeDrawers();
 
-    }*/
+    }
 
 
 
@@ -230,7 +220,7 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
                     public void onCompleted(GraphUser user, Response response) {
                         if (user != null) {
 
-                            Log.d("TAG_USER_INFO", user.toString());
+                           // Log.d("TAG_USER_INFO", user.toString());
                             //SharedPreferencesHelper.saveUserInfo(MainActivity.this,user.getId(),user.getUsername(),"");
                             SharedPreferencesHelper.saveUserInfo(TimeLineActivity.this, user.getId(), user.getName(), "","yes");
                             setProfileImage(profileUserImage,user.getId());
@@ -238,7 +228,7 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
                             currentUser.saveEventually();
 
                         } else if (response.getError() != null) {
-                            Log.d("TAG_USER_INFO",response.toString());
+                            //Log.d("TAG_USER_INFO",response.toString());
                             Toast.makeText(TimeLineActivity.this, getString(R.string.error_message), Toast.LENGTH_SHORT).show();
                         }
                     }
@@ -246,14 +236,14 @@ public class TimeLineActivity  extends ActionBarActivity implements AdapterView.
         request.executeAsync();
 
     }
-
+/*
 
     @Override
     public void onClick(View v) {
         Intent i = new Intent(this,NewProfesorActivity.class);
         startActivity(i);
 
-    }
+    }*/
 
 }
 

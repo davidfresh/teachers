@@ -27,7 +27,7 @@ import vision69.teachers.R;
  */
 public class new_profesor_fragment extends Fragment {
 
-    private EditText nombreedit, materiaedit, escuedit;
+    private EditText nombreedit, materiaedit, escuedit,com;
     //private FloatingActionButton fbAdd;
 
     @Override
@@ -52,6 +52,7 @@ public class new_profesor_fragment extends Fragment {
         nombreedit = (EditText) view.findViewById(R.id.nombre_edit);
         materiaedit = (EditText) view.findViewById(R.id.materia_edit);
         escuedit = (EditText) view.findViewById(R.id.escue_edit);
+        com = (EditText) view.findViewById(R.id.comenta);
         // fbAdd = (FloatingActionButton) view.findViewById(R.id.add_profe);
     }
 
@@ -67,7 +68,7 @@ public class new_profesor_fragment extends Fragment {
         switch (item.getItemId()) {
             case R.id.action_publish:
                 //Toast.makeText(getActivity(), "SI funciona!", Toast.LENGTH_SHORT).show();
-                saveprofesor(nombreedit.getText().toString(), materiaedit.getText().toString(), escuedit.getText().toString());
+                saveprofesor(nombreedit.getText().toString(), materiaedit.getText().toString(), escuedit.getText().toString(), com.getText().toString());
                 return true;
         }
         return super.onOptionsItemSelected(item);
@@ -91,15 +92,16 @@ public class new_profesor_fragment extends Fragment {
         }
     }*/
 
-    private void saveprofesor(String profeNombre, String profeMateria, String profeEscuela) {
+    private void saveprofesor(String profeNombre, String profeMateria, String profeEscuela,String coment) {
         if (!TextUtils.isEmpty(profeNombre) && !TextUtils.isEmpty(profeMateria) && !TextUtils.isEmpty(profeEscuela)) {
-            uploadprofesor(profeNombre, profeMateria, profeEscuela);
+            uploadprofesor(profeNombre, profeMateria, profeEscuela,coment);
         }
 
 
     }
 
-    private void uploadprofesor(final String profeNombre, final String profeMateria, final String profeEscuela) {
+
+    public void uploadprofesor(final String profeNombre, final String profeMateria, final String profeEscuela,final String coment) {
 
         final ProgressDialog progressDialog = new ProgressDialog(getActivity());
 
@@ -107,13 +109,17 @@ public class new_profesor_fragment extends Fragment {
         progressDialog.setMessage("Guardando Profesor...");
         progressDialog.show();
 
+    //ParseObject comenta = ParseObject.createWithoutData("actividad","d");
 
-        final ParseObject parseObject = new ParseObject("profesor");
-        parseObject.put("nombre", profeNombre);
-        parseObject.put("materia", profeMateria);
-        parseObject.put("escuela", profeEscuela);
-        parseObject.put("usuario", ParseUser.getCurrentUser());
-        parseObject.saveInBackground(new SaveCallback() {
+        final ParseObject profes = new ParseObject("profesor");
+        profes.put("nombre", profeNombre);
+        profes.put("materia", profeMateria);
+        profes.put("escuela", profeEscuela);
+        profes.put("comentario",coment);
+        profes.put("usuario", ParseUser.getCurrentUser());
+       // profes.put("coments",comenta);
+
+        profes.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 if (e != null)

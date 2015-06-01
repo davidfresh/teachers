@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    >
+
+<android.support.v7.widget.CardView
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card_view"
+    android:layout_gravity="center"
+    card_view:cardElevation="2dp"
+    card_view:cardBackgroundColor="@color/card"
+    android:layout_width="300dp"
+    android:layout_height="130dp"
+    card_view:cardCornerRadius="4dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+           <TextView
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:id="@+id/nombre_profe"
+               android:text="Profe"
+               android:textSize="24dp"
+               android:textStyle="bold"
+               android:layout_alignParentTop="true"
+               android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hdhdhdhdhdhhd"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_below="@+id/nombre_profe"
+                android:id="@+id/materia_profe"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:padding="@dimen/cardview_book_title_padding"
+                android:layout_centerHorizontal="true" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hdhdhdhdhdhhd"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:id="@+id/escuela_profe"
+                android:layout_below="@+id/materia_profe"
+                android:padding="@dimen/cardview_book_title_padding"
+                android:layout_centerHorizontal="true" />.
+
+
+
+
+
+
+
+
+        </RelativeLayout>
+
+</android.support.v7.widget.CardView>
+
+</LinearLayout>

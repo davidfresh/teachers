@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.github.ksoichiro.android.observablescrollview.ObservableScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/observableScroll"
+        >
+
+
+    </com.github.ksoichiro.android.observablescrollview.ObservableScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=" profes profes "
+            android:padding="@dimen/activity_horizontal_margin"
+            android:gravity="left"
+            android:id="@+id/detalle_profe_nombre"
+            android:textSize="24dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Materia materias"
+            android:paddingLeft="@dimen/activity_horizontal_margin"
+            android:gravity="left"
+            android:id="@+id/detalle_profe_materia"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="fca.fca"
+            android:padding="@dimen/gridview_horizontal_spacing_size"
+            android:gravity="left"
+            android:id="@+id/detalle_profe_escuela"
+            android:textSize="18dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/user_circle_image_size"
+                android:layout_height="@dimen/user_circle_image_size"
+                android:layout_margin="@dimen/user_image_padding"
+                android:src="@drawable/ic_launcher"
+                android:id="@+id/detalle_user_image"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="hasidhadhfudbsubv.dbsbcvasfh"
+                android:padding="@dimen/detail_text_padding"
+                android:gravity="center|left"
+                android:id="@+id/detalle_username"
+                />
+        </LinearLayout>
+
+        <RatingBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:stepSize="0.5"
+            android:id="@+id/califica_profe"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text="Small Text"
+            android:id="@+id/calificacion"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_gravity="right" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/new_book_text_edit_padding"
+            android:hint="comentar"
+            android:id="@+id/comenta"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />
+
+
+
+        <GridView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/comentarios"
+            android:numColumns="1"
+            android:stretchMode="columnWidth"
+            android:gravity="center"
+            android:horizontalSpacing="@dimen/gridview_horizontal_spacing_size"
+            android:verticalSpacing="@dimen/gridview_vertical_spacing_size"
+            tools:listitem="@layout/profesor_card_view_layout"
+            />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

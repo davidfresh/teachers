@@ -51,6 +51,10 @@
             android:name=".NewProfesorActivity"
             android:label="@string/add_profe" >
         </activity>
+        <activity
+            android:name=".DetalleActivity"
+            android:label="mis profes" >
+        </activity>
     </application>
 
 </manifest>

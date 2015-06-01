@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 import java.util.HashMap;
 
 /**
- * Created by leonelmendez on 28/12/14.
+ * Created by  on 28/12/14.
  */
 public class SharedPreferencesHelper {
 

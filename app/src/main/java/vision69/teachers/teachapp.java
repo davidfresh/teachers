@@ -9,6 +9,11 @@ import com.parse.ParseFacebookUtils;
  */
 public class teachapp extends SugarApp {
 
+    // Inicializamos la aplicacion con Parse.
+    // Application ID
+    //Client Key
+    //Inicializamos Sdk de Facebook con el Id de la aplicacion.
+
     @Override
     public void onCreate() {
         super.onCreate();
