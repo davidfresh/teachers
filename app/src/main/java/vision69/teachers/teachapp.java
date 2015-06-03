@@ -17,7 +17,7 @@ public class teachapp extends SugarApp {
     @Override
     public void onCreate() {
         super.onCreate();
-        Parse.initialize(this, "6mZvS9rlVQADT8msMhELQdkEGQeRKx6PDtecW3wl", "D51AZSXZjUTm8UnapH5mNrDGjUxZQg0sIatPsSVW");
-        ParseFacebookUtils.initialize("750692408376931");
+        Parse.initialize(this, "", "");
+        ParseFacebookUtils.initialize("");
     }
 }
